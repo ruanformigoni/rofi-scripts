@@ -28,8 +28,8 @@ search(){
 
 if [ ! -z "$@" ]
 then
-	QUERY=$@
-	if [[ "$@" == /* ]]
+	QUERY=${@#}
+	if [[ -f "$@" ]]
 	then
 		coproc ( exo-open "$@"	> /dev/null 2>&1 )
 		exec 1>&-
