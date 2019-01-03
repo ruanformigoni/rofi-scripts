@@ -13,9 +13,9 @@ search_opt(){
 
 search_empty(){
 	if [[ ! -z "$1" ]]; then
-		echo "$1"
+		echo "${1//$baseDir/}"
 	else
-		echo -e "! \uf872 Oh noes! Nothing found'"
+		echo -e "! \uf872 Oh noes! Nothing found"
 		search_opt
 	fi
 }
@@ -29,7 +29,7 @@ search(){
 if [ ! -z "$@" ]
 then
 	QUERY=${@#}
-	if [[ -f "$@" ]]
+	if [[ -f "${basedir}${@}" ]]
 	then
 		coproc ( exo-open "$@"	> /dev/null 2>&1 )
 		exec 1>&-
