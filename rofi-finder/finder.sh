@@ -29,9 +29,9 @@ search(){
 if [ ! -z "$@" ]
 then
 	QUERY=${@#}
-	if [[ -f "${basedir}${@}" ]]
+	if [[ -f "${baseDir}${@}" ]]
 	then
-		coproc ( exo-open "$@"	> /dev/null 2>&1 )
+		coproc ( exo-open "${baseDir}${@}"	> /dev/null 2>&1 )
 		exec 1>&-
 		exit;
 	elif [[ "$@" = \!* ]]
