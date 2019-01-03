@@ -21,7 +21,7 @@ search_empty(){
 }
 
 search(){
-		result=$(locate -i --regexp $1 | sed -e '/\..*\// d' 2>&1)
+		result=$(locate -i --regexp $1 | sed -r -e '/\..*\// d' -e '/\/.+\..*$/ !d' 2>&1)
 		search_empty "$result"
 	
 }
